@@ -14,7 +14,7 @@ const Banner = () => {
             src={image1}
             className="w-full rounded h-[600px]"
           />
-          <div className="absolute top-1/2 space-y-5 pl-10">
+          <div className="absolute md:top-1/2 top-1/3 space-y-5 pl-10">
             <h1 className="text-3xl text-white font-bold">Affordable Price For Car Servicing</h1>
             <p className="text-white">There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
             <div className="space-x-4">
@@ -40,7 +40,7 @@ const Banner = () => {
             src={image2}
             className="w-full rounded h-[600px]"
           />
-          <div className="absolute top-1/2 space-y-5 pl-10">
+          <div className="absolute md:top-1/2 top-1/3 space-y-5 pl-10">
             <h1 className="text-3xl text-white font-bold">Affordable Price For Car Servicing</h1>
             <p className="text-white">There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
             <div className="space-x-4">
@@ -66,7 +66,7 @@ const Banner = () => {
             src={image3}
             className="w-full rounded h-[600px]"
           />
-          <div className="absolute top-1/2 space-y-5 pl-10">
+          <div className="absolute md:top-1/2 top-1/3 space-y-5 pl-10">
             <h1 className="text-3xl text-white font-bold">Affordable Price For Car Servicing</h1>
             <p className="text-white">There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
             <div className="space-x-4">
@@ -92,7 +92,7 @@ const Banner = () => {
             src={image4}
             className="w-full rounded h-[600px]"
           />
-          <div className="absolute top-1/2 space-y-5 pl-10">
+          <div className="absolute md:top-1/2 top-1/3 space-y-5 pl-10">
             <h1 className="text-3xl text-white font-bold">Affordable Price For Car Servicing</h1>
             <p className="text-white">There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
             <div className="space-x-4">
