@@ -11,7 +11,7 @@ const About = () => {
            <img src={parts} alt='' className="rounded-lg shadow-2xl absolute right-5 w-3/5 top-1/2  border-8"/>
            </div>
             <div className='w-1/2'>
-            <p className='text-bold'>About us</p>
+            <p className='font-bold text-'>About us</p>
             <h1 className="text-5xl font-bold my-3">We are qualified & of experience in this field</h1>
             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
             <button className="btn btn-outline">Get more Info</button>
