@@ -13,7 +13,7 @@ const ServiceCard = ({services}) => {
                     <h2 className="card-title">{title}</h2>
                     <p className='font-bold'>Price:$<span>{price}</span> </p>
                     <div className="card-actions justify-end">
-                        <Link to={`/services/${_id}`}>
+                        <Link to={`/checkOut/${_id}`}>
                             <button className="btn btn-outline"><FaArrowAltCircleRight></FaArrowAltCircleRight></button>
                         </Link>
                     </div>
