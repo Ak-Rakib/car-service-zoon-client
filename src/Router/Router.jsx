@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
                 path: 'checkOut/:id',
                 element: <CheckOut></CheckOut>,
                 loader: ({params}) => fetch(`http://localhost:5000/serviceZoon/${params.id}`)
-            }
+            },
         ]
     }
 ]);

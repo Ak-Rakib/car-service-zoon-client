@@ -1,19 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import checkOut from "../../../assets/images/checkout/checkout.png";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 const CheckOut = () => {
+  const { user } = useContext(AuthContext);
+  const { _id, price, title, img } = useLoaderData();
+  console.log(img)
+
   const checkOutHandler = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = `${form.firstName.value} ${form.lastName.value}`;
-    const phone = form.contactNumber.value;
+    const name = form.name.value;
+    const date = form.date.value;
     const email = user?.email || "unregister";
-    const message = form.message.value;
-    console.log(name, phone, email, message);
-  };
+    const userOrder = {
+      name,
+      date,
+      email,
+      img,
+      service: title,
+      service_id: _id,
+      price: price,
+    };
+    console.log(userOrder);
 
-  const {_id, price, title} = useLoaderData();
+    fetch('http://localhost:5000/order', {
+        method: "POST",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(userOrder)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    });
+  };
 
   return (
     <div>
@@ -32,52 +55,66 @@ const CheckOut = () => {
           </div>
         </div>
       </div>
-      <form className="mb-20 mt-10" onSubmit={checkOutHandler}>
+      <form onSubmit={checkOutHandler}>
         <div className="grid grid-cols-1 lg:grid-cols-2 m-12 gap-5">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            className="input input-bordered  w-full mb-10 "
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            className="input input-bordered  w-full mb-10 "
-          />
-          <input
-            type="text"
-            name="contactNumber"
-            placeholder="Contact Number"
-            className="input input-bordered  w-full mb-4 "
-          />
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            readOnly
-            className="input input-bordered  w-full  "
-          />
-          <textarea
-            name="message"
-            className="textarea textarea-bordered w-full"
-            placeholder="Bio"
-          ></textarea>
-        </div>
-        <div className="text-center">
-          <input
-            type="submit"
-            className="btn btn-outline mr-3"
-            value="Submit"
-          />
-          <Link to="/order">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
             <input
-              type="submit"
-              className="btn btn-outline"
-              value="Place Order"
+              type="name"
+              name="name"
+              placeholder="name"
+              defaultValue={user?.displayName}
+              className="input input-bordered  w-full mb-10 "
             />
-          </Link>
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Date</span>
+            </label>
+            <input
+              type="date"
+              name="date"
+              className="input input-bordered  w-full mb-10 "
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="text"
+              name="email"
+              placeholder="email"
+              defaultValue={user?.email}
+              className="input input-bordered  w-full mb-4 "
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Price</span>
+            </label>
+            <input
+              type="text"
+              name="price"
+              defaultValue={"$" + price}
+              readOnly
+              className="input input-bordered  w-full  "
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Message</span>
+            </label>
+            <textarea
+              type="text"
+              name="message"
+              className="textarea textarea-bordered w-full"
+              placeholder="message"
+            ></textarea>
+          </div>
+          <input className="btn btn-block" type="submit" value="submit" />
         </div>
       </form>
     </div>
